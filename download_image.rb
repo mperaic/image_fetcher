@@ -8,7 +8,7 @@ def download_image(url, dest)
 end
 
 
-urls = File.read("urls.txt").split /[\r\n]+/
+urls = File.read("urls.txt").split(/[\r\n]+/)
 
 urls.each { |url| download_image(url, url.split('/').last) }
   
