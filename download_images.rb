@@ -1,14 +1,15 @@
-#!/usr/bin/env ruby
-
 require 'open-uri'
 
-
-urls = File.write('urls.txt', "https://i.postimg.cc/tn7hL1pC/jaz.jpg, https://i.postimg.cc/Z0qF9Qpt/kuruz.jpg, https://i.postimg.cc/62MrjVsm/vrh3.jpg")
-
+urls = open('https://github.com/mperaic/image_fetcher/blob/master/urls.txt').readlines
 def download_image(url, dest)
   open(url) do |u|
     File.open(dest, 'wb') { |f| f.write(u.read) }
   end
 end
 
-urls.each { |url| download_image(url, url.split('/').last) }
+
+urls = File.read('urls.txt')
+
+urls.each do 
+  { |url| download_image(url, url.split('/').last) }
+end
